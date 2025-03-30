@@ -7,6 +7,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const clearCartBtn = document.getElementById("clear-cart");
     const cartCount = document.getElementById("cart-count");
     const orderForm = document.querySelector("form");
+    const goToOrderBtn = document.getElementById("go-to-order");
+
+goToOrderBtn.addEventListener("click", function () {
+    cart.classList.remove("open"); // Cierra el carrito
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" }); // Desplazamiento suave al formulario
+});
+
+
 
     let cartList = [];
 
@@ -16,23 +24,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
         cartList.forEach((item, index) => {
             const li = document.createElement("li");
-            li.innerHTML = `${item.name} - $${item.price} 
+            li.innerHTML = `${item.name} (x${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}  
                 <button onclick="removeFromCart(${index})">❌</button>`;
             cartItems.appendChild(li);
-            total += item.price;
+            total += item.price * item.quantity;
         });
 
         cartTotal.textContent = total.toFixed(2);
-        cartCount.textContent = cartList.length;
+        cartCount.textContent = cartList.reduce((sum, item) => sum + item.quantity, 0);
     }
 
     window.addToCart = function (name, price) {
-        cartList.push({ name, price });
+        const existingItem = cartList.find(item => item.name === name);
+
+        if (existingItem) {
+            existingItem.quantity += 1;
+        } else {
+            cartList.push({ name, price, quantity: 1 });
+        }
+
         updateCart();
     };
 
     window.removeFromCart = function (index) {
-        cartList.splice(index, 1);
+        if (cartList[index].quantity > 1) {
+            cartList[index].quantity -= 1;
+        } else {
+            cartList.splice(index, 1);
+        }
         updateCart();
     };
 
@@ -61,21 +80,43 @@ document.addEventListener("DOMContentLoaded", function () {
     orderForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
-        const name = document.querySelector("input[placeholder='Tu nombre']").value;
-        const email = document.querySelector("input[placeholder='Tu correo']").value;
-        const message = document.querySelector("textarea[placeholder='Tu mensaje']").value;
+        const nameInput = document.querySelector("input[placeholder='Tu nombre']");
+        const emailInput = document.querySelector("input[placeholder='Tu correo']");
+        const messageInput = document.querySelector("textarea[placeholder='Tu mensaje']");
 
-        let orderText = "Pedido:\n";
+        const name = nameInput.value;
+        const email = emailInput.value;
+        const message = messageInput.value;
+
+        if (cartList.length === 0) {
+            alert("El carrito está vacío. Agrega productos antes de hacer el pedido.");
+            return;
+        }
+
+        let orderText = "📌 *Pedido realizado:*\n\n";
+        let total = 0;
+
         cartList.forEach(item => {
-            orderText += `- ${item.name} ($${item.price})\n`;
+            orderText += `- ${item.name} (x${item.quantity}) = ${(item.price * item.quantity).toFixed(2)}\n`;
+            total += item.price * item.quantity;
         });
-        
-        orderText += `\nNombre: ${name}\nCorreo: ${email}\nMensaje: ${message}`;
-        
+
+        orderText += `\n💰 *Total a pagar: ${total.toFixed(2)}*`;
+        orderText += `\n\n👤 Nombre: ${name}\n📧 Correo: ${email}\n📩 Mensaje: ${message}`;
+
         const whatsappNumber = "8292745882"; // Reemplaza con tu número de WhatsApp
         const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(orderText)}`;
-        
+
         window.open(whatsappURL, "_blank");
+
+        // Limpiar formulario después de enviar el pedido
+        nameInput.value = "";
+        emailInput.value = "";
+        messageInput.value = "";
+
+        // Vaciar el carrito después de enviar el pedido
+        cartList = [];
+        updateCart();
     });
 });
 
