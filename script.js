@@ -8,6 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const cartCount = document.getElementById("cart-count");
     const orderForm = document.querySelector("form");
     const goToOrderBtn = document.getElementById("go-to-order");
+    
+    
+
 
 goToOrderBtn.addEventListener("click", function () {
     cart.classList.remove("open"); // Cierra el carrito
@@ -70,7 +73,7 @@ goToOrderBtn.addEventListener("click", function () {
 
     document.querySelectorAll(".buy-btn").forEach((button, index) => {
         const itemName = document.querySelectorAll(".item h3")[index].textContent;
-        const itemPrice = parseFloat(document.querySelectorAll(".item span")[index].textContent.replace("$", ""));
+        const itemPrice = parseFloat(document.querySelectorAll(".item span")[index].textContent.replace("RD $", ""));
 
         button.addEventListener("click", function () {
             addToCart(itemName, itemPrice);
@@ -119,5 +122,6 @@ goToOrderBtn.addEventListener("click", function () {
         updateCart();
     });
 });
+
 
 
