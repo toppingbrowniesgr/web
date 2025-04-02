@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Topping Brownies GR</title>
     <link rel="stylesheet" href="stelys3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     <header>
@@ -33,7 +34,10 @@
         <p>Total: <span id="cart-total">0</span></p>
         <button id="clear-cart">Vaciar Carrito</button>
         <button id="go-to-order">Ir a Hacer Pedido</button>
+        
     </div>
+
+    
 
     <section id="menu" class="menu-section">
         <h2>Menú de Brownies</h2>
@@ -42,39 +46,82 @@
                 <img src="imagen/Brownie3.jpg" alt="Brownie con fresa">
                 <h3>Brownie con Fresa</h3>
                 <p>Delicioso brownie cubierto con fresas frescas y crema.</p>
-                <span>200 c/u</span>
+                <span>RD $200 c/u</span>
                 <button class="buy-btn">Añadir al carrito</button>
             </div>
             <div class="item">
                 <img src="imagen/brownie2.jpg" alt="Brownie con chocolate">
                 <h3>Brownie de Chocolate</h3>
                 <p>Brownie clásico con extra de chocolate derretido.</p>
-                <span>125 c/u</span>
+                <span>RD $125 c/u</span>
                 <button class="buy-btn">Añadir al carrito</button>
             </div>
             <div class="item">
                 <img src="imagen/Brownie1.jpg" alt="Brownie con dulce de leche">
                 <h3>Brownie con Dulce de Leche</h3>
                 <p>Brownie con una capa generosa de dulce de leche.</p>
-                <span>125 c/u</span>
+                <span>RD $125 c/u</span>
                 <button class="buy-btn">Añadir al carrito</button>
             </div>
             <div class="item">
                 <img src="imagen/oreo brownies4.jpg" alt="Brownie con Oreo">
                 <h3>Brownie de Oreo</h3>
                 <p>Brownie con trozos de galleta Oreo y crema.</p>
-                <span>150 c/u</span>
+                <span>RD $150 c/u</span>
                 <button class="buy-btn">Añadir al carrito</button>
             </div>
             <div class="item">
                 <img src="imagen/brownie5.jpg" alt="Brownie azucarado">
                 <h3>Brownie azucarado</h3>
                 <p>Brownie con textura azucarada. </p>
-                <span>100 c/u</span>
+                <span>RD $100 c/u</span>
                 <button class="buy-btn">Añadir al carrito</button>
             </div>
         </div>
     </section>
+
+    <section id="menu" class="menu-section">
+        <h2>Combo de Brownies</h2>
+        <div class="menu-items">
+            <div class="item">
+                <img src="imagen/Brownie3.jpg" alt="Brownie con fresa">
+                <h3>12 Brownies con Fresa</h3>
+                <p>Deliciosos brownies cubiertos con fresas frescas y crema.</p>
+                <span>RD $2000 </span> 
+                <button class="buy-btn">Añadir al carrito</button>
+            </div>
+            <div class="item">
+                <img src="imagen/brownie2.jpg" alt="Brownie con chocolate">
+                <h3>12 Brownies de Chocolate</h3>
+                <p>Brownies clásicos con extra de chocolate derretido.</p>
+                <span>RD $1250 </span>
+                <button class="buy-btn">Añadir al carrito</button>
+            </div>
+            <div class="item">
+                <img src="imagen/Brownie1.jpg" alt="Brownie con dulce de leche">
+                <h3>12 Brownies con Dulce de Leche</h3>
+                <p>Brownies con una capa generosa de dulce de leche.</p>
+                <span>RD $1250</span>
+                <button class="buy-btn">Añadir al carrito</button>
+            </div>
+            <div class="item">
+                <img src="imagen/oreo brownies4.jpg" alt="Brownie con Oreo">
+                <h3>12 Brownies de Oreo</h3>
+                <p>Brownies con trozos de galleta Oreo y crema.</p>
+                <span>RD $1500 </span>
+                <button class="buy-btn">Añadir al carrito</button>
+            </div>
+            <div class="item">
+                <img src="imagen/brownie5.jpg" alt="Brownie azucarado">
+                <h3>12 Brownies Azucarados</h3>
+                <p>Brownies con textura azucarada.</p>
+                <span>RD $1000 </span>
+                <button class="buy-btn">Añadir al carrito</button>
+            </div>
+        </div>
+    </section>
+    
+    
 
     <section id="about" class="about">
         <h2>Sobre Nosotros</h2>
@@ -93,8 +140,12 @@
     </section>
 
     <div class="social-buttons">
-        <a href="https://www.instagram.com/toppings_brownies_gr" target="_blank" class="instagram">Instagram</a>
-        <a href="https://api.whatsapp.com/message/AP23IRPHOB4TA1?autoload=1&app_absent=0" target="_blank" class="whatsapp">WhatsApp</a>
+        <a href="https://www.instagram.com/toppings_brownies_gr" target="_blank" class="instagram">
+            <i class="fab fa-instagram"></i> 
+        </a>
+        <a href="https://api.whatsapp.com/message/AP23IRPHOB4TA1?autoload=1&app_absent=0" target="_blank" class="whatsapp">
+            <i class="fab fa-whatsapp"></i> 
+        </a>
     </div>
 
     <footer>
@@ -105,6 +156,7 @@
     <script>
         document.getElementById("go-to-order").addEventListener("click", function () {
             document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+            
         });
     </script>
 </body>
