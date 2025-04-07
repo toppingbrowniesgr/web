@@ -19,6 +19,42 @@
             <button type="submit">Enviar pedido</button>
         </form>
     </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+            document.getElementById("order-form").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const name = document.getElementById("name").value.trim();
+                const email = document.getElementById("email").value.trim();
+                const message = document.getElementById("message").value.trim();
+
+                if (cart.length === 0) {
+                    alert("El carrito está vacío.");
+                    return;
+                }
+
+                let orderText = "📌 *Pedido realizado:*\n\n";
+                let total = 0;
+
+                cart.forEach(item => {
+                    orderText += `- ${item.name} (x${item.quantity}) = RD $${(item.price * item.quantity).toFixed(2)}\n`;
+                    total += item.price * item.quantity;
+                });
+
+                orderText += `\n💰 *Total a pagar: RD $${total.toFixed(2)}*`;
+                orderText += `\n\n👤 Nombre: ${name}\n📧 Correo: ${email}\n📩 Mensaje: ${message}`;
+
+                const whatsappNumber = "8292745882"; // Cambia por tu número
+                const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(orderText)}`;
+
+                window.open(whatsappURL, "_blank");
+                localStorage.removeItem("cart");
+                event.target.reset();
+            });
+        });
+    </script>
     
 </body>
 </html>
