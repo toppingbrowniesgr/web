@@ -78,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Botón "Ir a ordenar Pedido"
     goToOrderBtn.addEventListener("click", function () {
         if (cartList.length === 0) {
+            event.preventDefault(); // Evita redirección
             alert("El carrito está vacío. Agrega productos antes de hacer el pedido.");
         } else {
             localStorage.setItem("cart", JSON.stringify(cartList)); // Guarda el carrito
