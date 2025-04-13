@@ -276,6 +276,13 @@ p{
     background-color: #6b4a2b;
 }
 
+#correo:valid {
+    border-color: green;
+}
+#correo:invalid {
+    border-color: red;
+}
+
 
 
 
