@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Formulario.css">
+    <link rel="icon" href="imagen/hola.png" type="image/png">
+    <title>Ordenar pedido</title>
+</head>
+<body>
+    <section class="form" id="Contact">
+        <h2 class="form__title">Hacer pedido</h2> <!-- corregí la clase -->
+        <p>¿Tienes preguntas o quieres hacer un pedido especial? Contáctanos.</p>
+
+        <form class="form__form" id="order-form"> <!-- le agregué id="order-form" -->
+            <div class="form__input-container">
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="John" required>
+            </div>
+
+            <div class="form__input-container">
+                <label for="apellido">Apellido</label>
+                <input type="text" id="apellido" name="apellido" placeholder="Doe" required>
+            </div>
+
+            <div class="form__input-container">
+                <label for="correo">E-mail</label>
+                <input type="email" id="correo" name="correo" placeholder="mail@example.com" required>
+            </div>
+            
+            <div class="form__input-container">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Your message.." required></textarea>
+            </div>
+
+            <div class="form__input-container">
+                <input type="submit" value="Enviar">
+            </div>
+        </form>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+            document.getElementById("order-form").addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const name = document.getElementById("nombre").value.trim();
+                const lastname = document.getElementById("apellido").value.trim();
+                const email = document.getElementById("correo").value.trim();
+                const message = document.getElementById("mensaje").value.trim();
+
+                let orderText = "📌 *Pedido realizado:*\n\n";
+                let total = 0;
+
+                cart.forEach(item => {
+                    orderText += `- ${item.name} (x${item.quantity}) = RD $${(item.price * item.quantity).toFixed(2)}\n`;
+                    total += item.price * item.quantity;
+                });
+
+                orderText += `\n💰 *Total a pagar: RD $${total.toFixed(2)}*`;
+                orderText += `\n\n👤 Nombre: ${name} ${lastname}\n📧 Correo: ${email}\n📩 Mensaje: ${message}`;
+
+                const whatsappNumber = "8292745882"; // Cambia por tu número
+                const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(orderText)}`;
+
+                window.open(whatsappURL, "_blank");
+                localStorage.removeItem("cart");
+                event.target.reset();
+            });
+        });
+    </script>
+</body>
+</html>

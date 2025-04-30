@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brownies Irresistibles - Disfruta de los más deliciosos brownies personalizados. Un bocado de felicidad en cada pedazo.">
+    <meta property="og:title" content="Topping Brownies GR"> 
+    <meta property="og:image" content="https://mi-servidor.com/imagen/icono.png"> 
+    <title>Brownies Irresistibles</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" href="imagen/hola.png"type="image/png">
+    <meta name="Venta de brownies" content="brownie con toppings de fresa, dulce de leche, oreo, chocolate etc">
+
+</head>
+<body>
+    <header>
+        <div class="hero">
+            <h1>Topping Brownies GR</h1>
+            <p>Tu momento dulce empieza aquí</p>
+            <button class="cta-button" onclick="mostrarMenu()" aria-label="Ver nuestros sabores">Descubre Nuestros Sabores</button>
+        </div>
+    </header>
+
+    <nav class="menu-container">
+        <ul class="menu">
+            <li><a href="Menu.html">Nuestros Productos</a></li>
+            <li><a href="Formulario.html">Contáctanos</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Secciones como productos y contacto pueden ir aquí -->
+        <section id="productos">
+            <!-- Contenido de productos -->
+        </section>
+
+        <section id="contacto">
+            <!-- Información de contacto -->
+        </section>
+    </main>
+
+    <script>
+        function mostrarMenu() {
+            document.body.classList.add('show-menu');
+            setTimeout(() => {
+                window.location.href = '#productos';
+            }, 500);
+        }
+    </script>
+</body>
+</html>

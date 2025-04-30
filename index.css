@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Open+Sans&display=swap');
+
+/* --------------------- */
+/* ESTILOS GENERALES     */
+/* --------------------- */
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(135deg, #3e1f0e, #5c2a12);
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* --------------------- */
+/* ENCABEZADO / HERO     */
+/* --------------------- */
+header {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.hero {
+    position: relative;
+    padding: 20px;
+    z-index: 1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="%23ffffff11"/></svg>') center/cover;
+    z-index: -1;
+    opacity: 0.15;
+}
+
+.hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    margin: 0;
+    animation: fadeIn 2s forwards;
+    letter-spacing: 1px;
+}
+
+.hero p {
+    font-size: 1.4rem;
+    margin: 20px 0;
+    animation: fadeIn 2s 0.5s forwards;
+    color: #f9d5bb;
+}
+
+/* --------------------- */
+/* BOTÓN CTA             */
+/* --------------------- */
+.cta-button {
+    background: #d2691e;
+    color: #fff;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    animation: fadeIn 2s 1s forwards;
+    font-weight: 600;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button:hover {
+    background: #b05318;
+    transform: scale(1.08);
+}
+
+/* --------------------- */
+/* MENÚ NAVEGACIÓN       */
+/* --------------------- */
+.menu-container {
+    background: #fff;
+    color: #2c1810;
+    padding: 15px 0;
+    text-align: center;
+    position: fixed;
+    top: -100px;
+    width: 100%;
+    transition: top 0.5s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.show-menu .menu-container {
+    top: 0;
+}
+
+.menu-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.menu-container a {
+    color: #2c1810;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: 2px solid #2c1810;
+    border-radius: 30px;
+    background-color: #fff;
+    transition: all 0.3s ease;
+}
+
+.menu-container a:hover {
+    background: #d2691e;
+    color: #fff;
+    border-color: #d2691e;
+}
+
+/* --------------------- */
+/* ANIMACIONES           */
+/* --------------------- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------------------- */
+/* RESPONSIVE DESIGN     */
+/* --------------------- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+
+    .menu-container a {
+        font-size: 0.95rem;
+        padding: 8px 16px;
+    }
+}
