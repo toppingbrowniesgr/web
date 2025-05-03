@@ -157,7 +157,7 @@
             </details>
 
             <details>
-                <summary>¿Por qué elegirnos?</summary>
+                <summary> ¿Por qué elegirnos?</summary>
                     <p class="summary-contenido">Nuestra pasión por la repostería y el compromiso con la calidad nos distinguen. Cada brownie está hecho para brindarte la mejor experiencia de sabor.</p>
             </details>
 
@@ -208,5 +208,27 @@
             
         });
     </script>
+    <!-- Carga las librerías -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+<!-- Código JavaScript personalizado -->
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+        gsap.to(".menu", {
+        paddingTop: "10px",
+        paddingBottom: "10px",
+        backgroundColor: "#0006",
+        scrollTrigger: {
+        trigger: ".menu",
+        start: "top top+=10",
+        end: "top top+=100",
+        scrub: true,
+}
+});
+</script>
+
+
 </body>
 </html>
