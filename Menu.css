@@ -16,6 +16,8 @@
     scroll-behavior: smooth;
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) #fff;
+    
+
 }
 
 body {
@@ -25,6 +27,7 @@ body {
     background-color: var(--background-light);
 }
 
+
 /* Header profesional */
 header {
     background: linear-gradient(rgba(139, 69, 19, 0.9), rgba(139, 69, 19, 0.7));
@@ -32,6 +35,7 @@ header {
     padding: 2rem 1rem;
     box-shadow: 0 2px 10px var(--shadow-color);
     position: relative;
+    
 }
 
 header::before {
@@ -125,7 +129,12 @@ header h1 {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 5% cover 40% ;
 }
+
+
 
 .item:hover {
     transform: translateY(-5px);
@@ -221,6 +230,9 @@ header h1 {
     margin: 40px auto;
     max-width: 800px;
     text-align: left;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 5% cover 40% ;
 }
 
 .about h2, .preguntas h2 {
@@ -235,6 +247,9 @@ details {
     padding: 10px 15px;
     margin-bottom: 10px;
     cursor: pointer;
+    animation: aparecer both;
+    animation-timeline: view();
+    animation-range: cover 5% cover 40% ;
 }
 
 summary {
@@ -279,7 +294,7 @@ summary:hover {
     background:white;
     color: black;
     padding: 1rem;
-    border-radius: 50%;
+    border-radius: 100%;
     font-size: 1.5rem;
     cursor: pointer;
     box-shadow: 0 2px 10px var(--shadow-color);
@@ -444,4 +459,44 @@ footer {
     }
 
 
+}
+
+
+
+
+/* -----------nav quiery -------*/
+@media screen and (min-width: 100px) {
+    .menu  {
+        animation: header-movement both;
+        animation-timeline: scroll();
+        position: sticky;
+        top: 0;
+        animation-range:10px 100px  ;
+    }
+}
+
+/*---------animaciones------*/
+
+@keyframes header-movement{
+    from{
+        padding: 15px 0;
+        background-color: var(--primary-color);
+    }
+
+    to{
+        padding: 10px 0;
+        background-color: #0006;
+    }
+}
+
+
+@keyframes aparecer {
+    from{
+        opacity: 0;
+    }
+
+    to{
+        opacity: 1;
+
+    }
 }
