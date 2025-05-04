@@ -488,24 +488,22 @@ footer {
 
 /* -----------nav quiery -------*/
 @media screen and (min-width: 100px) {
-    .menu  {
+    .menu {
         position: sticky;
         top: 0;
-        padding: 15px 0; /* Fallback */
-        background-color: var(--primary-color); /* Fallback */
+        padding: 15px 0;
+        background-color: var(--primary-color);
+    }
+
+    @supports (animation-timeline: scroll()) {
+        .menu {
+            animation: header-movement both;
+            animation-timeline: scroll();
+            animation-range: 10px 100px;
+        }
     }
 }
 
-
-
-/* Soporte para animación scroll-link */
-@supports (animation-timeline: scroll()) {
-    .menu {
-        animation: header-movement both;
-        animation-timeline: scroll();
-        animation-range: 10px 100px;
-    }
-}
 
 /* -----------animaciones-------- */
 @keyframes header-movement {
