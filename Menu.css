@@ -273,7 +273,7 @@ summary:hover {
 }
 
 summary::marker{
-    content: ' ';
+    content: '';
 }
 
 summary::before{
