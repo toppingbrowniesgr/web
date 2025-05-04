@@ -251,19 +251,9 @@ details {
     animation-timeline: view();
     animation-range: cover 5% cover 40% ;
     font-size: 1.2rem;
-    transition: max-height 2s ease;
-    overflow: hidden;
+
 }
 
-details {
-    overflow: hidden;
-    transition: max-height 0.5s ease;
-  }
-  
-  details[open] {
-    max-height: 500px; /* o un valor suficientemente grande para contener el contenido */
-  }
-  
 
 summary {
     font-weight: bold;
@@ -491,8 +481,6 @@ footer {
         top: 13rem;
         right: 2px;
     }
-
-
 }
 
 
@@ -519,9 +507,19 @@ footer {
 
     to{
         padding: 10px 0;
-        background-color: #0006;
+        background-color: #a1846f;
     }
 }
+
+@supports not (animation-timeline: scroll()) {
+    .menu {
+      /* Estilo alternativo solo para navegadores como Safari */
+    padding: 10px 0;
+    background-color: #8f3c00;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+}
+
 
 
 @keyframes aparecer {
