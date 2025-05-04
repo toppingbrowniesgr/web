@@ -489,46 +489,43 @@ footer {
 /* -----------nav quiery -------*/
 @media screen and (min-width: 100px) {
     .menu  {
-        animation: header-movement both;
-        animation-timeline: scroll();
         position: sticky;
         top: 0;
-        animation-range:10px 100px  ;
+        padding: 15px 0; /* Fallback */
+        background-color: var(--primary-color); /* Fallback */
     }
 }
 
-/*---------animaciones------*/
 
-@keyframes header-movement{
-    from{
+
+/* Soporte para animación scroll-link */
+@supports (animation-timeline: scroll()) {
+    .menu {
+        animation: header-movement both;
+        animation-timeline: scroll();
+        animation-range: 10px 100px;
+    }
+}
+
+/* -----------animaciones-------- */
+@keyframes header-movement {
+    from {
         padding: 15px 0;
         background-color: var(--primary-color);
     }
 
-    to{
+    to {
         padding: 10px 0;
         background-color: #a1846f;
     }
 }
 
-@supports not (animation-timeline: scroll()) {
-    .menu {
-      /* Estilo alternativo solo para navegadores como Safari */
-    padding: 10px 0;
-    background-color: #8f3c00;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
-}
-
-
-
 @keyframes aparecer {
-    from{
+    from {
         opacity: 0;
     }
 
-    to{
+    to {
         opacity: 1;
-
     }
 }
