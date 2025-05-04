@@ -285,7 +285,7 @@ summary::before{
 }
 
 details[open] summary::before{
-    content: '-';
+    content: '';
 }
 
 
